@@ -1,9 +1,12 @@
 import React from "react";
 import { Form, Button, Stack } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { createData } from "../axios/dataAxios";
+import { getNamesAction } from "../actions/nameAction";
 
 export const MyForm = (props) => {
   const { formData, setFormData } = props;
+  const dispatch = useDispatch();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
