@@ -1,8 +1,7 @@
 import React from "react";
 import { Form, Button, Stack } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { createData } from "../axios/dataAxios";
-import { getNamesAction } from "../actions/nameAction";
+import { createNamesAction, getNamesAction } from "../actions/nameAction";
 
 export const MyForm = (props) => {
   const { formData, setFormData } = props;
@@ -15,7 +14,7 @@ export const MyForm = (props) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    createData(formData);
+    dispatch(createNamesAction(formData));
   };
 
   return (
