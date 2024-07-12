@@ -1,11 +1,14 @@
-import { useState } from "react";
 import "./App.css";
 import { MainContainer } from "./components/mainContainer";
+import { Route, Routes } from "react-router-dom";
+import AuthPage from "./pages/AuthPage";
 
 function App() {
   return (
     <>
-      <MainContainer></MainContainer>
+      <Routes>
+        <Route path="/" element={<AuthPage />}></Route>
+      </Routes>
     </>
   );
 }
