@@ -1,6 +1,7 @@
 import express from "express";
 import { connectMongo } from "./config/dbConfig.js";
 import { createName, readNames } from "./model/dataModel.js";
+import userRouter from "./routers/userRouter.js";
 import cors from "cors";
 
 const app = express();
@@ -16,6 +17,9 @@ app.use(cors());
 
 // })
 connectMongo();
+
+// Routers
+app.use("/api/user", userRouter);
 
 app.post("/api/data", (req, res) => {
   const data = req.body;
