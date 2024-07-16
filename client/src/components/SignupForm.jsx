@@ -21,7 +21,7 @@ const SignupForm = (props) => {
   const { formData, handleOnChange } = useFormPayload;
   const { first_name, last_name, password, email, phone } = formData;
 
-  const handleOnSubmit = async () => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     // call axios
@@ -32,7 +32,7 @@ const SignupForm = (props) => {
       email,
       phone,
     });
-    setIsLoginForm(true);
+    // setIsLoginForm(true);
   };
 
   return (

@@ -2,6 +2,8 @@ import "./App.css";
 import { MainContainer } from "./components/mainContainer";
 import { Route, Routes } from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AuthPage />}></Route>
       </Routes>
+      <ToastContainer />
     </>
   );
 }

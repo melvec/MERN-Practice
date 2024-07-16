@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { loginUser } from "../axios/userAxios";
 import useForm from "../hooks/useForm";
 import CustomInput from "./CustomInput";
+import { toast } from "react-toastify";
 
 const initialFormData = {
   email: "",
@@ -14,7 +15,11 @@ const LoginForm = () => {
   const { email, password } = formData;
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const result = await loginUser();
+
+    const result = await loginUser(formData);
+    if (result.status === "error") {
+      return toast.error(result.message);
+    }
   };
 
   return (

@@ -21,12 +21,27 @@ userRouter.post("/login", async (req, res) => {
 
     const user = await findUserByEmail(email);
 
-    if (user?._id) {
-      const passwordMatchCheck = bcrypt.compareSync(password, user.password);
-      res.send("logged in ");
+    if (user.password === password) {
+      res.json({
+        status: 200,
+        message: "User logged in",
+      });
+    } else {
+      res.json({
+        status: "error",
+        message: "Invalid user",
+      });
     }
+    //res.send("error");
+    // if (user?._id) {
+    //   const passwordMatchCheck = bcrypt.compareSync(password, user.password);
+    //   res.send("logged in ");
+    // }
   } catch (error) {
-    res.send(error);
+    res.json({
+      status: "error",
+      message: "Invalid user",
+    });
   }
 });
 
