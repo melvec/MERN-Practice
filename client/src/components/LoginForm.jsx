@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { loginUser } from "../axios/userAxios";
 import useForm from "../hooks/useForm";
 import CustomInput from "./CustomInput";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const initialFormData = {
   email: "",
@@ -12,6 +13,7 @@ const initialFormData = {
 
 const LoginForm = () => {
   const { formData, handleOnChange } = useForm(initialFormData);
+  const navigate = useNavigate();
   const { email, password } = formData;
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,10 @@ const LoginForm = () => {
     const result = await loginUser(formData);
     if (result.status === "error") {
       return toast.error(result.message);
+    } else {
+      if (result.status === 200) {
+        navigate("/home");
+      }
     }
   };
 
